@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="DateTime2Convention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnakeCaseColumnNameConvention.cs" />
+    <Compile Include="SnakeCaseConverter.cs" />
     <Compile Include="SnakeCaseTableNameConvention.cs" />
   </ItemGroup>
   <ItemGroup>
