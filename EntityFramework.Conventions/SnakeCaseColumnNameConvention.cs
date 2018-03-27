@@ -12,7 +12,6 @@ namespace EnitityFramework.Conventions
 {
     public class SnakeCaseColumnNameConvention : Convention
     {
-
         public SnakeCaseColumnNameConvention()
         {
             Properties().Configure(config => config.HasColumnName(GetColumnName(config.ClrPropertyInfo)));

@@ -22,7 +22,7 @@ namespace EnitityFramework.Conventions
 
             var entitySet = model.StoreModel.Container.EntitySets.SingleOrDefault(es => es.ElementType == GetRootType(item));
 
-            var tableName = item.MetadataProperties.FirstOrDefault(x => x.Name == "TableName");
+            var tableName = item.MetadataProperties.FirstOrDefault(x => x.Name == "TableName")?.Value;
 
             if (tableName == null)
             {
