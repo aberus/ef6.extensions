@@ -17,8 +17,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
             if (type == null)
                 throw new ArgumentNullException(nameof(type));
 
-            var tableAttribute = type.GetCustomAttributes(typeof(TableAttribute), false).FirstOrDefault() as TableAttribute;
-            if (tableAttribute != null)
+            if (type.GetCustomAttributes(typeof(TableAttribute), false).FirstOrDefault() is TableAttribute tableAttribute)
                 return tableAttribute.Name;
 
             return SnakeCaseConverter.ConvertToSnakeCase(type.Name);

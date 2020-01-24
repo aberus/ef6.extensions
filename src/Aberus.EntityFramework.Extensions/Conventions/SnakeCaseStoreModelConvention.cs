@@ -19,7 +19,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 
             var entitySet = model.StoreModel.Container.EntitySets.SingleOrDefault(es => es.ElementType == GetRootType(item));
 
-            var tableName = item.MetadataProperties.FirstOrDefault(x => x.Name == "TableName")?.Value;
+            object tableName = item.MetadataProperties.FirstOrDefault(x => x.Name == "TableName")?.Value;
 
             if (tableName == null)
             {
@@ -41,7 +41,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
 
-            var preferredName = (string)item.MetadataProperties.FirstOrDefault(x => x.Name == "PreferredName")?.Value;
+            string preferredName = (string)item.MetadataProperties.FirstOrDefault(x => x.Name == "PreferredName")?.Value;
             if (preferredName == item.Name)
                 item.Name = SnakeCaseConverter.ConvertToSnakeCase(item.Name);
         }
@@ -77,7 +77,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
             foreach (var associationSetMapping in associationsSetMappings)
             {
                 var associationSetEnds = associationSetMapping.AssociationSet.AssociationSetEnds;
-                associationSetMapping.StoreEntitySet.Table = String.Format("{0}_{1}",
+                associationSetMapping.StoreEntitySet.Table = string.Format("{0}_{1}",
                     SnakeCaseConverter.ConvertToSnakeCase(associationSetEnds[0].EntitySet.ElementType.Name),
                     SnakeCaseConverter.ConvertToSnakeCase(associationSetEnds[1].EntitySet.ElementType.Name));
             }
