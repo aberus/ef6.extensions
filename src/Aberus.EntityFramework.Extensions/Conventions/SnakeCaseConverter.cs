@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
-namespace EnitityFramework.Conventions
+namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
     public static class SnakeCaseConverter
     {
-        public static string ConvertToSnakeCase(string input)
+        internal static string ConvertToSnakeCase(string input)
         {
             var result = Regex.Replace(input, "(.)([A-Z][a-z]+)", m => m.Groups[1].Value + "_" + m.Groups[2].Value);
             result = Regex.Replace(result, "(.)([0-9]+)", m => m.Groups[1].Value + "_" + m.Groups[2].Value);

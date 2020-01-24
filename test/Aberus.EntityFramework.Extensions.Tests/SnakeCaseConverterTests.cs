@@ -1,17 +1,11 @@
-﻿using EnitityFramework.Conventions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace EnitityFramework.Conventions.Tests
+namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
-    [TestFixture()]
-    public class SnakeCaseConverterTests
+    [TestFixture]
+    public sealed class SnakeCaseConverterTests
     {
-        [Test()]
+        [Test]
         [TestCase("HpsmBizservis", ExpectedResult = "hpsm_bizservis")]
         [TestCase("HPSMBizservis", ExpectedResult = "hpsm_bizservis")]
         [TestCase("HPSM_Bizservis", ExpectedResult = "hpsm_bizservis")]

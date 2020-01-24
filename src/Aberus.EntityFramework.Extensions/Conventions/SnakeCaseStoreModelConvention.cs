@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EnitityFramework.Conventions
+namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
     public class SnakeCaseStoreModelConvention : IStoreModelConvention<EntityType>, IStoreModelConvention<EdmProperty>, IStoreModelConvention<AssociationType>
     {
@@ -49,7 +46,7 @@ namespace EnitityFramework.Conventions
                 item.Name = SnakeCaseConverter.ConvertToSnakeCase(item.Name);
         }
 
-        public string Uniquify(IEnumerable<string> inputStrings, string targetString)
+        private string Uniquify(IEnumerable<string> inputStrings, string targetString)
         {
             string uniqueString = targetString;
             int i = 0;
@@ -60,7 +57,7 @@ namespace EnitityFramework.Conventions
             return uniqueString;
         }
 
-        EntityType GetRootType(EntityType entityType)
+        private EntityType GetRootType(EntityType entityType)
         {
             if (entityType.BaseType != null)
                 return GetRootType((EntityType)entityType.BaseType);
@@ -69,6 +66,12 @@ namespace EnitityFramework.Conventions
 
         public void Apply(AssociationType item, DbModel model)
         {
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
             var associationsSetMappings = model.ConceptualToStoreMapping.AssociationSetMappings;
 
             foreach (var associationSetMapping in associationsSetMappings)

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EnitityFramework.Conventions.Tests")]
+[assembly: AssemblyTitle("Aberus.EntityFramework.Extensions.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("KRKA d.d.")]
-[assembly: AssemblyProduct("EnitityFramework.Conventions.Tests")]
-[assembly: AssemblyCopyright("Copyright © KRKA d.d. 2017")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Aberus.EntityFramework.Extensions.Tests")]
+[assembly: AssemblyCopyright("Copyright © 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

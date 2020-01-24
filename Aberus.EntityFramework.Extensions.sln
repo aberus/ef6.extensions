@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Conventions", "EntityFramework.Conventions\EntityFramework.Conventions.csproj", "{205101D4-FA17-4A67-B2C3-57FDDA7C51AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aberus.EntityFramework.Extensions", "src\Aberus.EntityFramework.Extensions\Aberus.EntityFramework.Extensions.csproj", "{205101D4-FA17-4A67-B2C3-57FDDA7C51AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Conventions.Tests", "EntityFramework.Conventions.Tests\EntityFramework.Conventions.Tests.csproj", "{0B4D478A-B53A-406D-8DB8-3412DF46F390}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aberus.EntityFramework.Extensions.Tests", "test\Aberus.EntityFramework.Extensions.Tests\Aberus.EntityFramework.Extensions.Tests.csproj", "{0B4D478A-B53A-406D-8DB8-3412DF46F390}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EDB4F4C-D6DD-48D0-BDBA-AD48C942FF2A}
 	EndGlobalSection
 EndGlobal
