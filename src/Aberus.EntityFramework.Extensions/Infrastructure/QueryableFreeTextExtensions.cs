@@ -350,11 +350,11 @@ namespace Aberus.Data.Entity.Infrastructure
 
         #region public FreeTextSearch extension
         /// <summary>
-        /// FreeTextSearch Executes a free text search (using FREETEXT) for Entities that were processed with the 
+        /// FreeTextSearch Executes a free text search (using FREETEXT) for Entities that were processed with the
         /// SqlFullTextIndexAttribute (or are just in a free text catalog). It queries the FreeText catalog for the primary keys
         /// of the TEntity objects that are in scope for the query, then creates an expression
         /// tree to include those entities.The DbContext is used to execute these initial
-        /// queries 
+        /// queries
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="query"></param>
@@ -367,11 +367,11 @@ namespace Aberus.Data.Entity.Infrastructure
         }
 
         /// <summary>
-        /// FreeTextSearch Executes a free text search (using FREETEXT) for Entities that were processed with the 
+        /// FreeTextSearch Executes a free text search (using FREETEXT) for Entities that were processed with the
         /// SqlFullTextIndexAttribute (or are just in a free text catalog). It queries the FreeText catalog for the primary keys
         /// of the TEntity objects that are in scope for the query, then creates an expression
         /// tree to include those entities.The DbContext is used to execute these initial
-        /// queries 
+        /// queries
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="query"></param>
@@ -387,11 +387,11 @@ namespace Aberus.Data.Entity.Infrastructure
 
         #region public FreeTextContains extension
         /// <summary>
-        /// FreeTextContains Executes a free text search (using CONTAINS) for Entities that were processed with the 
+        /// FreeTextContains Executes a free text search (using CONTAINS) for Entities that were processed with the
         /// SqlFullTextIndexAttribute (or are just in a free text catalog). It queries the FreeText catalog for the primary keys
         /// of the TEntity objects that are in scope for the query, then creates an expression
         /// tree to include those entities. TThe DbContext is used to execute these initial
-        /// queries 
+        /// queries
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="query"></param>
@@ -403,13 +403,12 @@ namespace Aberus.Data.Entity.Infrastructure
             return FreeTextExInternal(query, dbContext, containsSearchText, null, true);
         }
 
-
         /// <summary>
-        /// FreeTextContains Executes a free text search (using CONTAINS) for Entities that were processed with the 
+        /// FreeTextContains Executes a free text search (using CONTAINS) for Entities that were processed with the
         /// SqlFullTextIndexAttribute (or are just in a free text catalog). It queries the FreeText catalog for the primary keys
         /// of the TEntity objects that are in scope for the query, then creates an expression
         /// tree to include those entities. The DbContext is used to execute these initial
-        /// queries 
+        /// queries
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="query"></param>

@@ -1,10 +1,13 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
     public static class SnakeCaseConverter
     {
-        internal static string ConvertToSnakeCase(string input)
+        internal static string Convert(string input)
         {
             var result = Regex.Replace(input, "(.)([A-Z][a-z]+)", m => m.Groups[1].Value + "_" + m.Groups[2].Value);
             result = Regex.Replace(result, "(.)([0-9]+)", m => m.Groups[1].Value + "_" + m.Groups[2].Value);

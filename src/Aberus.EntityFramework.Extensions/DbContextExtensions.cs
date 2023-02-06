@@ -1,6 +1,7 @@
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using Aberus.Data.Entity.Common;
 
 namespace Aberus.Data.Entity
 {
@@ -8,10 +9,9 @@ namespace Aberus.Data.Entity
     {
         public static string CreateDatabaseScript(this DbContext context)
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
+            Check.NotNull(context, nameof(context));
 
-            return ((IObjectContextAdapter)context).ObjectContext?.CreateDatabaseScript() 
+            return ((IObjectContextAdapter)context).ObjectContext?.CreateDatabaseScript()
                 ?? "Database script cannot be created";
         }
     }

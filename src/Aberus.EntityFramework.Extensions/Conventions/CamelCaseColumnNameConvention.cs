@@ -6,9 +6,9 @@ using Aberus.Data.Entity.Common;
 
 namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
-    public class SnakeCaseColumnNameConvention : Convention
+    public class CamelCaseColumnNameConvention : Convention
     {
-        public SnakeCaseColumnNameConvention()
+        public CamelCaseColumnNameConvention()
         {
             Properties().Configure(config => config.HasColumnName(GetColumnName(config.ClrPropertyInfo)));
         }
@@ -21,7 +21,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
             if (columnAttribute != null)
                 return columnAttribute.Name;
 
-            return SnakeCaseConverter.Convert(propertyInfo.Name);
+            return CamelCaseConverter.Convert(propertyInfo.Name);
         }
     }
 }

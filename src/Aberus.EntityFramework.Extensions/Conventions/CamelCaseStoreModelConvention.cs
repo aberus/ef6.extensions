@@ -6,7 +6,7 @@ using Aberus.Data.Entity.Common;
 
 namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
-    public class SnakeCaseStoreModelConvention : IStoreModelConvention<EntityType>, IStoreModelConvention<EdmProperty>, IStoreModelConvention<AssociationType>
+    public class CamelCaseStoreModelConvention : IStoreModelConvention<EntityType>, IStoreModelConvention<EdmProperty>, IStoreModelConvention<AssociationType>
     {
         public void Apply(EntityType item, DbModel model)
         {
@@ -23,8 +23,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
                         .Where(es => es.Schema == entitySet.Schema)
                         .Except(new[] { entitySet })
                         .Select(n => n.Table)
-                        , SnakeCaseConverter.Convert(entitySet.Table));
-
+                        , CamelCaseConverter.Convert(entitySet.Table));
             }
         }
 
@@ -35,7 +34,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 
             string preferredName = (string)item.MetadataProperties.FirstOrDefault(x => x.Name == "PreferredName")?.Value;
             if (preferredName == item.Name)
-                item.Name = SnakeCaseConverter.Convert(item.Name);
+                item.Name = CamelCaseConverter.Convert(item.Name);
         }
 
         public void Apply(AssociationType item, DbModel model)
@@ -54,9 +53,10 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
             {
                 var associationSetEnds = associationSetMapping.AssociationSet.AssociationSetEnds;
                 associationSetMapping.StoreEntitySet.Table = string.Format("{0}_{1}",
-                    SnakeCaseConverter.Convert(associationSetEnds[0].EntitySet.ElementType.Name),
-                    SnakeCaseConverter.Convert(associationSetEnds[1].EntitySet.ElementType.Name));
+                    CamelCaseConverter.Convert(associationSetEnds[0].EntitySet.ElementType.Name),
+                    CamelCaseConverter.Convert(associationSetEnds[1].EntitySet.ElementType.Name));
             }
+
         }
     }
 }

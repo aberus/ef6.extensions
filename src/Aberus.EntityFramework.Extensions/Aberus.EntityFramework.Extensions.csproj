@@ -41,11 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Check.cs" />
+    <Compile Include="Conventions\CamelCaseConverter.cs" />
+    <Compile Include="Conventions\LowerCaseTableNameConvention.cs" />
     <Compile Include="Conventions\DateTime2Convention.cs" />
+    <Compile Include="Conventions\Helper.cs" />
+    <Compile Include="Conventions\CamelCaseColumnNameConvention.cs" />
+    <Compile Include="Conventions\LowerCaseColumnNameConvention.cs" />
     <Compile Include="Conventions\SnakeCaseColumnNameConvention.cs" />
     <Compile Include="Conventions\SnakeCaseConverter.cs" />
+    <Compile Include="Conventions\CamelCaseStoreModelConvention.cs" />
+    <Compile Include="Conventions\LowerCaseStoreModelConvention.cs" />
     <Compile Include="Conventions\SnakeCaseStoreModelConvention.cs" />
+    <Compile Include="Conventions\CamelCaseTableNameConvention.cs" />
     <Compile Include="Conventions\SnakeCaseTableNameConvention.cs" />
+    <Compile Include="Conventions\UpperSnakeCaseConverter.cs" />
     <Compile Include="Infrastructure\QueryableFreeTextExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbContextExtensions.cs" />
@@ -53,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework">
-      <Version>6.4.0</Version>
+      <Version>6.4.4</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

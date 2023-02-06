@@ -6,9 +6,9 @@ using Aberus.Data.Entity.Common;
 
 namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
-    public class SnakeCaseTableNameConvention : Convention
+    public class CamelCaseTableNameConvention : Convention
     {
-        public SnakeCaseTableNameConvention()
+        public CamelCaseTableNameConvention()
         {
             Types().Configure(c => c.ToTable(GetTableName(c.ClrType)));
         }
@@ -20,7 +20,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
             if (type.GetCustomAttributes(typeof(TableAttribute), false).FirstOrDefault() is TableAttribute tableAttribute)
                 return tableAttribute.Name;
 
-            return SnakeCaseConverter.Convert(type.Name);
+            return CamelCaseConverter.Convert(type.Name);
         }
     }
 }

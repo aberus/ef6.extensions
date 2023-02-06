@@ -3,12 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using Aberus.Data.Entity.Common;
+using System.Reflection;
 
 namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
-    public class SnakeCaseTableNameConvention : Convention
+    public class LowerCaseTableNameConvention : Convention
     {
-        public SnakeCaseTableNameConvention()
+        public LowerCaseTableNameConvention()
         {
             Types().Configure(c => c.ToTable(GetTableName(c.ClrType)));
         }
@@ -20,7 +21,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
             if (type.GetCustomAttributes(typeof(TableAttribute), false).FirstOrDefault() is TableAttribute tableAttribute)
                 return tableAttribute.Name;
 
-            return SnakeCaseConverter.Convert(type.Name);
+            return type.Name.ToLowerInvariant();
         }
     }
 }

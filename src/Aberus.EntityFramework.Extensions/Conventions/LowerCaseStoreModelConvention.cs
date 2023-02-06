@@ -6,7 +6,7 @@ using Aberus.Data.Entity.Common;
 
 namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 {
-    public class SnakeCaseStoreModelConvention : IStoreModelConvention<EntityType>, IStoreModelConvention<EdmProperty>, IStoreModelConvention<AssociationType>
+    public class LowerCaseStoreModelConvention : IStoreModelConvention<EntityType>, IStoreModelConvention<EdmProperty>, IStoreModelConvention<AssociationType>
     {
         public void Apply(EntityType item, DbModel model)
         {
@@ -22,8 +22,8 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
                     = Helper.Uniquify(model.StoreModel.Container.EntitySets
                         .Where(es => es.Schema == entitySet.Schema)
                         .Except(new[] { entitySet })
-                        .Select(n => n.Table)
-                        , SnakeCaseConverter.Convert(entitySet.Table));
+                        .Select(n => n.Table),
+                        entitySet.Table.ToLowerInvariant());
 
             }
         }
@@ -35,7 +35,7 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
 
             string preferredName = (string)item.MetadataProperties.FirstOrDefault(x => x.Name == "PreferredName")?.Value;
             if (preferredName == item.Name)
-                item.Name = SnakeCaseConverter.Convert(item.Name);
+                item.Name = item.Name.ToLowerInvariant();
         }
 
         public void Apply(AssociationType item, DbModel model)
@@ -43,19 +43,17 @@ namespace Aberus.Data.Entity.ModelConfiguration.Conventions
             Check.NotNull(item, nameof(item));
             Check.NotNull(model, nameof(model));
 
-            if (!item.IsForeignKey)
+            if (item.IsForeignKey)
             {
-                return;
-            }
+                foreach (var property in item.Constraint.FromProperties)
+                {
+                    property.Name = property.Name.ToLowerInvariant();
+                }
 
-            var associationsSetMappings = model.ConceptualToStoreMapping.AssociationSetMappings;
-
-            foreach (var associationSetMapping in associationsSetMappings)
-            {
-                var associationSetEnds = associationSetMapping.AssociationSet.AssociationSetEnds;
-                associationSetMapping.StoreEntitySet.Table = string.Format("{0}_{1}",
-                    SnakeCaseConverter.Convert(associationSetEnds[0].EntitySet.ElementType.Name),
-                    SnakeCaseConverter.Convert(associationSetEnds[1].EntitySet.ElementType.Name));
+                foreach (var property in item.Constraint.ToProperties)
+                {
+                    property.Name = property.Name.ToLowerInvariant();
+                }
             }
         }
     }
